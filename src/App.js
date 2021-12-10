@@ -2,6 +2,42 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Character from './components/Character'
 import './App.css';
+import styled from 'styled-components';
+
+const StyledDetails = styled.div`
+    background-image: './images/rm-bj';
+    margin: 0%;
+    padding: 0%;
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column wrap;
+
+    h1 {
+      font-size: 5rem;
+      background-color: ${props => props.theme.secondaryColor};
+      border-radius: 40px;
+      padding: 2%;
+      color: ${props => props.theme.tertiaryColor};
+    }
+
+    button {
+      font-size: 3rem;
+      font-weight: bold;
+      width: 80%;
+      height:10vh;
+      color: white;
+      background-color: ${props => props.theme.darkBrown};
+      border-radius: 40px;
+      margin: 10px;
+    }
+    
+    button: hover {
+      background-color: white;
+      color: ${props => props.theme.secondaryColor};
+    }
+`
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -37,7 +73,7 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
+    <StyledDetails className="App">
       <h1 className="Header">Characters</h1>
       {
         characters.map(ch => {
@@ -47,7 +83,7 @@ const App = () => {
       {
         currentCharactersId && <Character characterId={currentCharactersId} close={closeDetails} />
       }
-    </div>
+    </StyledDetails>
   );
 }
 

@@ -5,35 +5,82 @@ import styled, { keyframes } from 'styled-components';
 
 
 const kf = keyframes`
-    0% {left: 0px; top: 200px;}
-    50% {left: 0px; top: 0px}
+    0% {left: 5000px; top: 0px;}
+    100% {left: 0px; top: 0px;}
 `
 const StyledDetails = styled.div`
-    border-radius: 40% 10% 40% 10%;
-    margin: 0%;
-    height: 100%;
-    position: relative;
-    animation-name: ${kf};
-    animation-duration: 1s;
+    padding: 2%;
+    margin: 5%;
     display: flex;
-    justify-content: center;
-    align-content: center;
     flex-flow: column wrap;
+    height: 100vh;
+    width: 100%;
+    border-radius: 40px;
+    border: 4px solid ${props => props.theme.tertiaryColor};    position: relative;
+    animation-name: ${kf};
+    animation-duration: .5s;
+    
     background-color: ${props => props.theme.secondaryColor};
-    ul {
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-flow: column wrap;
-        width: 80%;
-        border: 2px solid ${props => props.theme.secondaryColor};
-        background-color: ${props => props.theme.primaryColor};
-        height: 30vh;
-        border-radius: 60% 60% 20% 20%;
+
+    h2 {
+        font-size: 2.5rem;
+        font-family: 'Alata', sans-serif;
+        color: white;
+
+    }
+    
+    h4{
+        font-family: 'Alata', sans-serif;
+        color: white;
+        font-size: 2rem;
     }
 
-    li {
-        bottom-border: 2px solid white;
+    p {
+        background-color: black;
+        border-radius: 40px;
+        padding: 1%;
+        font-family: 'Alata', sans-serif;
+        color:  ${props => props.theme.tertiaryColor};
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 1%;
+    }
+
+    }
+    ul {
+        height: 20vh;
+        display: flex;
+        align-content: center;
+        flex-flow: column wrap;
+        margin: 0%;
+        padding: 2% 0%;
+        border: 2px solid ${props => props.theme.secondaryColor};
+        background-color: ${props => props.theme.primaryColor};
+        border-radius: 40px;
+    }
+
+    h4 li {
+        font-family: 'Alata', sans-serif;
+        font-size: 1.5rem;
+        padding-bottom: 1%;
+        margin-bottom: 1%;
+        border-bottom: 5px solid ${props => props.theme.tertiaryColor};
+        color: white;
+    }
+
+    button {
+        margin-left: 6%;
+        width: 40%;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 2%;
+        border-radius: 80px;
+        background-color: ${props => props.theme.darkBrown};
+        color: white;
+    }
+
+    button:hover {
+        background-color: ${props => props.theme.primaryColor};
     }
 `
 
@@ -63,20 +110,24 @@ export default function Character(props) {
             {
                 details &&
                 <>
-                    <h3>Name: {details.name}</h3>
-                    <h4>Home World: {details.homeworld}</h4>
-                    <h4>Birth Year: {details.birth_year}</h4>
-                    <h4>Gender: {details.gender}</h4>
-                    <h3>
+                    <h4>Name: </h4>
+                        <p>{details.name}</p>
+                    <h4>Home World: </h4>
+                        <p>{details.homeworld}</p>
+                    <h4>Birth Year: </h4>
+                        <p>{details.birth_year}</p>
+                    <h4>Gender: </h4>
+                        <p>{details.gender}</p>
+                    <h4>
                         Appearance: 
                         <ul>
-                            <p>Height: {details.height}</p>
-                            <p>Mass: {details.mass}</p>
-                            <p>Skin Color: {details.skin_color}</p>
-                            <p>Hair Color: {details.hair_color}</p>
-                            <p>Eye Color: {details.eye_color}</p>
+                            <li>Height: {details.height}</li>
+                            <li>Mass: {details.mass}</li>
+                            <li>Skin Color: {details.skin_color}</li>
+                            <li>Hair Color: {details.hair_color}</li>
+                            <li>Eye Color: {details.eye_color}</li>
                         </ul>
-                    </h3>
+                    </h4>
                 </>
             }
             <button onClick={close}>Close</button>
