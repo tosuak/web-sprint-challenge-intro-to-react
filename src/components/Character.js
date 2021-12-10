@@ -1,6 +1,46 @@
 // Write your Character component here
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import styled, { keyframes } from 'styled-components';
+
+
+const kf = keyframes`
+    0% {left: 0px; top: 200px;}
+    50% {left: 0px; top: 0px}
+`
+const StyledDetails = styled.div`
+    border-radius: 40% 10% 40% 10%;
+    margin: 0%;
+    height: 100%;
+    position: relative;
+    animation-name: ${kf};
+    animation-duration: 1s;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: column wrap;
+    background-color: ${props => props.theme.secondaryColor};
+    ul {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-flow: column wrap;
+        width: 80%;
+        border: 2px solid ${props => props.theme.secondaryColor};
+        background-color: ${props => props.theme.primaryColor};
+        height: 30vh;
+        border-radius: 60% 60% 20% 20%;
+    }
+
+    li {
+        bottom-border: 2px solid white;
+    }
+`
+
+
+
+
+
 
 
 export default function Character(props) {
@@ -18,7 +58,7 @@ export default function Character(props) {
     }, [characterId])
 
     return (
-        <div className='container'>
+        <StyledDetails className='container'>
             <h2>Character Details:</h2>
             {
                 details &&
@@ -40,6 +80,6 @@ export default function Character(props) {
                 </>
             }
             <button onClick={close}>Close</button>
-        </div>
+        </StyledDetails>
     )
 }
